@@ -4,7 +4,7 @@ import Task from "./Task";
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
-  const [categories] = useState(["Personal", "Work", "All"]);
+  const [categories] = useState(["Personal", "Work","Food","Code","Entertainment","Misc", "All"]);
 
   useEffect(() => {
     const storedTasks = localStorage.getItem("tasks");
