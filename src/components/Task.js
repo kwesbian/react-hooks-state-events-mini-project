@@ -11,4 +11,3 @@ function Task({ text, category, onDeleteTask }) {
 }
 
 export default Task;
-

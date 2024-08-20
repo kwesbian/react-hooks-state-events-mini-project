@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 function NewTaskForm({ categories, onTaskFormSubmit }) {

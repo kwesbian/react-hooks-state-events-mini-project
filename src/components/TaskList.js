@@ -1,39 +1,15 @@
-import React, { useState, useEffect } from "react";
-import NewTaskForm from "./NewTaskForm";
+import React from "react";
 import Task from "./Task";
 
-function TaskList() {
-  const [tasks, setTasks] = useState([]);
-  const [categories] = useState(["Personal", "Work","Food","Code","Entertainment  ","Misc", "All"]);
-
-  useEffect(() => {
-    const storedTasks = localStorage.getItem("tasks");
-    if (storedTasks) {
-      setTasks(JSON.parse(storedTasks));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
-
-  const onDeleteTask = (taskToDelete) => {
-    setTasks(tasks.filter((task) => task.text !== taskToDelete.text));
-  };
-
-  const onTaskFormSubmit = (newTask) => {
-    setTasks([...tasks, newTask]);
-  };
-
+function TaskList({ tasks, onDeleteTask }) {
   return (
-    <div className="tasks">
-      <NewTaskForm categories={categories} onTaskFormSubmit={onTaskFormSubmit} />
-      {tasks.map((task) => (
+    <div className="task-list">
+      {tasks.map((task, index) => (
         <Task
-          key={task.text}
+          key={index}
           text={task.text}
           category={task.category}
-          onDeleteTask={() => onDeleteTask(task)}
+          onDeleteTask={onDeleteTask}
         />
       ))}
     </div>
